@@ -21,6 +21,24 @@ class Rocket:
 
     total_weight : float = 0
         The total weight of the rocket in kg.
+
+        
+    Methods
+    -------
+    set_fuel(fuel)
+        Sets the fuel amount of the rocket in kg.
+
+    get_fuel()
+        Returns the fuel amount of the rocket in kg.
+
+    get_thrust_duration()
+        Returns the thrust duration of the rocket in seconds.
+
+    get_payload_weight()
+        Returns the payload weight of the rocket in kg.
+
+    get_total_weight()
+        Returns the total weight of the rocket in kg.
     """
 
     base_weight: float
