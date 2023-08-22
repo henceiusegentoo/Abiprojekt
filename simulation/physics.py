@@ -1,5 +1,5 @@
-from constants import *
-from rocket import Rocket
+from simulation.constants import *
+from simulation.rocket import Rocket
 
 def get_acceleration(rocket: Rocket) -> float:
     """
