@@ -51,11 +51,11 @@ class Rocket:
     """
 
     base_weight: float
-    payload_weight: float
 
     flow_rate: float
     thrust: float
 
+    payload_weight: float = 0
     fuel: float = 0
     thrust_duration: float = 0
     
@@ -73,6 +73,10 @@ class Rocket:
 
     def get_thrust_duration(self):
         return self.thrust_duration
+
+    def set_payload_weight(self, payload_weight):
+        self.payload_weight = payload_weight
+        self.__set_total_weight()
 
     def get_payload_weight(self):
         return self.payload_weight

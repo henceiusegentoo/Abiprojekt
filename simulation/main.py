@@ -3,14 +3,14 @@ from simulation.physics import *
 
 rocket = Rocket(
     base_weight=200_000,
-    payload_weight=100_000,
     flow_rate=650 * 33,
-    thrust=2_300_000 * 33
+    thrust=2_300_000 * 33,
 )
 
-def simulate(fuel: float, thrust_duration: int):
+def simulate(fuel: float, thrust_duration: int, payload_weight: float):
+    rocket.set_payload_weight(payload_weight)
     rocket.set_fuel(fuel)
-    rocket.set_thrust_duration(140)
+    rocket.set_thrust_duration(thrust_duration)
 
     t = 0
     d = 0
