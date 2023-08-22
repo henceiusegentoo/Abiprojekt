@@ -19,7 +19,8 @@ def simulate(fuel: float, thrust_duration: int, payload_weight: float):
 
     # Part 1 - Thrust
     while (fuel := rocket.get_fuel()) > 0 and rocket.get_thrust_duration() > t:
-        a = get_acceleration(rocket) - get_scaled_gravity(d)
+        drag = get_drag_force(v, d)
+        a = get_acceleration(rocket, drag) - get_scaled_gravity(d)
         rocket.set_fuel(fuel - rocket.get_flow_rate())
 
         v += a
@@ -36,7 +37,8 @@ def simulate(fuel: float, thrust_duration: int, payload_weight: float):
 
     # Part 2 - Free fall
     while v > 0:
-        a = -get_scaled_gravity(d)
+        drag = get_drag_force(v, d)
+        a = -get_scaled_gravity(d) - (drag / rocket.get_total_weight())
 
         v += a
         d += v

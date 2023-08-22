@@ -61,6 +61,8 @@ class Rocket:
     
     total_weight: float = 0
 
+    drag_coefficiency: float = 0.75
+
     def set_fuel(self, fuel):
         self.fuel = fuel
         self.__set_total_weight()
@@ -95,6 +97,9 @@ class Rocket:
     
     def get_flow_rate(self):
         return self.flow_rate
+    
+    def get_drag_coefficiency(self):
+        return self.drag_coefficiency
     
     def __repr__(self) -> str:
         return f"Rocket(base_weight={self.base_weight:_}, payload_weight={self.payload_weight:_}, fuel={self.fuel:_}, thrust_duration={self.thrust_duration:_}, total_weight={self.total_weight:_})"

@@ -1,7 +1,7 @@
 from simulation.main import simulate
 
 fuel = 3_400_000 # kg
-thrust_duration = 140 # s
+thrust_duration = 240 # s
 payload_weight = 100_000 # kg
 
 res = simulate(fuel, thrust_duration, payload_weight)
