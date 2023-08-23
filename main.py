@@ -6,4 +6,4 @@ payload_weight = 100_000 # kg
 
 res = simulate(fuel, thrust_duration, payload_weight)
 
-print(res[2])
+print(res)

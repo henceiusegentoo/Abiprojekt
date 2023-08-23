@@ -54,4 +54,4 @@ def simulate(fuel: float, thrust_duration: int, payload_weight: float):
 
     final = {'distance': d, 'time': t}
 
-    return post_thrust, post_free_fall, final
+    return final.get('distance')
