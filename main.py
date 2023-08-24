@@ -4,6 +4,9 @@ import tomllib
 import os
 
 config_path = os.path.join(os.path.dirname(__file__), "config.toml")
+if not os.path.exists(config_path):
+    raise FileNotFoundError("Config file not found")
+
 with open(config_path, "rb") as config_file:
     config = tomllib.load(config_file)
 

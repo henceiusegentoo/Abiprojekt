@@ -1,3 +1,5 @@
+# config format
+```toml
 # fuel in kg
 # thrust_duration in s
 # payload_weight in kg
@@ -11,4 +13,5 @@ payload_weight = 100_000
 
 [simulation_conditions]
 desired_height = 5000_000.0
-iterations = 10_000
+iterations = 100_000
+```
