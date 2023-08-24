@@ -14,6 +14,6 @@ thrust_duration = 240.0
 payload_weight = 100_000
 
 [simulation_conditions]
-desired_height = 5000_000.0
+desired_height = 5_000_000.0
 iterations = 100_000
 ```
