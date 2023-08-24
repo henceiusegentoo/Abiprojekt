@@ -1,10 +1,10 @@
 # Instructions
-Configuration is done in config.toml
-Fuel is in kg
-Thrust duration in seconds
-Payload weight in kg
-Desired height is in metres
-Iteration is just an int
+**Configuration is done in config.toml**
+* Fuel is in kg
+* Thrust duration in seconds
+* Payload weight in kg
+* Desired height is in metres
+* Iteration is just an int
 
 ## Example
 ```toml
