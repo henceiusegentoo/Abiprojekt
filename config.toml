@@ -1,0 +1,14 @@
+# fuel in kg
+# thrust_duration in s
+# payload_weight in kg
+# desired_height in m
+# iterations as int
+
+[rocket_parameters]
+fuel = 3_400_000.0
+thrust_duration = 240.0
+payload_weight = 100_000
+
+[simulation_conditions]
+desired_height = 5000_000.0
+iterations = 10_000

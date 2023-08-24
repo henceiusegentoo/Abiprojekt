@@ -8,6 +8,21 @@ rocket = Rocket(
 )
 
 def simulate(fuel: float, thrust_duration: int, payload_weight: float):
+    """
+    Simulates the flight of a rocket.
+
+    Parameters
+    ----------
+    fuel : float
+        The amount of fuel to use.
+
+    thrust_duration : int
+        The amount of time to use the thrust.
+
+    payload_weight : float
+        The weight of the payload.
+    """
+
     rocket.set_payload_weight(payload_weight)
     rocket.set_fuel(fuel)
     rocket.set_thrust_duration(thrust_duration)
