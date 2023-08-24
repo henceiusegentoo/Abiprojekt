@@ -34,9 +34,9 @@ def main():
     final_thrust_duration = optimization[1]
     final_payload_weight = optimization[2]
 
-    print(f"Final fuel: {final_fuel}")
-    print(f"Final thrust duration: {final_thrust_duration}")
-    print(f"Final payload weight: {final_payload_weight}")
+    print(f"Optimized fuel: {final_fuel}")
+    print(f"Optimized thrust duration: {final_thrust_duration}")
+    print(f"Optimized payload weight: {final_payload_weight}")
 
     res = simulate(
         fuel = final_fuel,

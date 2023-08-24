@@ -1,7 +1,6 @@
 import random
 from typing import Callable
 
-
 def optimize(f: Callable, max_fuel: float, max_thrust_duration: float, payload_weight: int, desired_height: float, iterations: int):
     """
     Optimizes the given function f by trying different parameters and returning the best result.
@@ -30,6 +29,9 @@ def optimize(f: Callable, max_fuel: float, max_thrust_duration: float, payload_w
     best_params = None
 
     for i in range(iterations):
+        if i % 250 == 0:
+            print(f"* Iteration {i}", end="\r")
+
         fuel = random.randint(0, max_fuel)
         thrust_duration = random.randint(0, max_thrust_duration)
 
