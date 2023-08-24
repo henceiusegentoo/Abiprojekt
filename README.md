@@ -1,11 +1,13 @@
-# config format
-```toml
-# fuel in kg
-# thrust_duration in s
-# payload_weight in kg
-# desired_height in m
-# iterations as int
+# Instructions
+Configuration is done in config.toml
+Fuel is in kg
+Thrust duration in seconds
+Payload weight in kg
+Desired height is in metres
+Iteration is just an int
 
+## Example
+```toml
 [rocket_parameters]
 fuel = 3_400_000.0
 thrust_duration = 240.0
