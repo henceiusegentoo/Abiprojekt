@@ -30,7 +30,7 @@ def optimize(f: Callable, max_fuel: float, max_thrust_duration: float, payload_w
 
     for i in range(iterations):
         if i % 250 == 0:
-            print(f"* Iteration {i} of {iterations}", end="\r")
+            print(f"* Iteration {i:_} of {iterations:_}", end="\r")
 
         fuel = random.randint(0, max_fuel)
         thrust_duration = random.randint(0, max_thrust_duration)
