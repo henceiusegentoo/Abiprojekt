@@ -48,6 +48,7 @@ def main():
     )
 
     print(f"Final distance: {res:_}")
+    return res
 
 if __name__ == "__main__":
     main()
