@@ -1,14 +1,15 @@
 from simulation.main import simulate
 from optimization.main import optimize
-import tomllib
+import toml
 import os
+import matplotlib.pyplot as plt
 
 config_path = os.path.join(os.path.dirname(__file__), "config.toml")
 if not os.path.exists(config_path):
     raise FileNotFoundError("Config file not found")
 
-with open(config_path, "rb") as config_file:
-    config = tomllib.load(config_file)
+with open(config_path, "r") as config_file:
+    config = toml.load(config_file)
 
 # fuel in kg
 # thrust_duration in s
@@ -47,8 +48,12 @@ def main():
         payload_weight = final_payload_weight
     )
 
-    print(f"Final distance: {res:_}")
-    return res
+    plt.plot([t[0] for t in res[1]], [t[1] for t in res[1]])
+    plt.xlabel("Time (s)")
+    plt.ylabel("Height (m)")
+    plt.savefig("height.png")
+
+    print(f"Final distance: {res[1]}")
 
 if __name__ == "__main__":
     main()

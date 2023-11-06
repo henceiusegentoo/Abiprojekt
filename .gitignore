@@ -163,3 +163,4 @@ cython_debug/
 config.toml
 logger
 tester.py
+height.png

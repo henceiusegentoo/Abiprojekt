@@ -32,6 +32,8 @@ def simulate(fuel: float, thrust_duration: int, payload_weight: float):
     v = 0
     a = 0
 
+    points_in_time = []
+
     # Part 1 - Thrust
     while (fuel := rocket.get_fuel()) > 0 and rocket.get_thrust_duration() > t:
         drag = get_drag_force(v, d)
@@ -42,6 +44,8 @@ def simulate(fuel: float, thrust_duration: int, payload_weight: float):
         d += v
 
         t += 1
+
+        points_in_time.append((t, d))
 
     post_thrust = {
         "time": t,
@@ -60,6 +64,8 @@ def simulate(fuel: float, thrust_duration: int, payload_weight: float):
 
         t += 1
 
+        points_in_time.append((t, d))
+
     post_free_fall = {
         "time": t,
         "distance": d,
@@ -69,4 +75,4 @@ def simulate(fuel: float, thrust_duration: int, payload_weight: float):
 
     final = {'distance': d, 'time': t}
 
-    return final.get('distance')
+    return final.get('distance'), points_in_time

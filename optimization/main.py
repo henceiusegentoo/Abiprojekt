@@ -38,7 +38,7 @@ def optimize(f: Callable, max_fuel: float, max_thrust_duration: float, payload_w
         fuel = random.randint(min_fuel, int(max_fuel))
         thrust_duration = random.randint(min_thrust_duration, int(max_thrust_duration))
 
-        res = f(fuel, thrust_duration, payload_weight)
+        res = f(fuel, thrust_duration, payload_weight)[0]
 
         if res > best:
             best = res
