@@ -1,6 +1,6 @@
 from simulation.main import simulate
 from optimization.main import optimize
-import toml
+import tomllib
 import os
 import matplotlib.pyplot as plt
 
@@ -8,8 +8,8 @@ config_path = os.path.join(os.path.dirname(__file__), "config.toml")
 if not os.path.exists(config_path):
     raise FileNotFoundError("Config file not found")
 
-with open(config_path, "r") as config_file:
-    config = toml.load(config_file)
+with open(config_path, "rb") as config_file:
+    config = tomllib.load(config_file)
 
 # fuel in kg
 # thrust_duration in s
