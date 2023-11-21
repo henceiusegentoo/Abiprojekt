@@ -26,6 +26,14 @@ def simulate(fuel: float, thrust_duration: int, time_increments: float = 1):
     velocity = 0
     acceleration = 0
 
+    pre_thrust = {
+        "time": time,
+        "distance": distance,
+        "velocity": velocity,
+        "acceleration": acceleration,
+        "weight": rocket.get_total_weight(),
+    }
+
     # Part 1 - Thrust
     while (fuel := rocket.get_fuel()) > 0 and rocket.get_thrust_duration() > time:
         drag = get_drag_force(velocity, distance)
@@ -41,7 +49,9 @@ def simulate(fuel: float, thrust_duration: int, time_increments: float = 1):
         time = round(time + time_increments, rounding_precision) # round to avoid floating point errors
         points_in_time.append((time, distance))
 
-        rocket.set_fuel(fuel - rocket.get_flow_rate() * time_increments)
+        fuel_remaining = fuel - rocket.get_flow_rate() * time_increments
+
+        rocket.set_fuel(fuel_remaining) if fuel_remaining > 0 else rocket.set_fuel(0)
 
     post_thrust = {
         "time": time,
@@ -74,6 +84,7 @@ def simulate(fuel: float, thrust_duration: int, time_increments: float = 1):
 
     return {
         "points_in_time": points_in_time,
+        "pre_thrust": pre_thrust,
         "post_thrust": post_thrust,
         "post_free_fall": post_free_fall,
     }
