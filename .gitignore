@@ -161,6 +161,4 @@ cython_debug/
 .vscode/
 
 config.toml
-logger
-tester.py
-height.png
+results/

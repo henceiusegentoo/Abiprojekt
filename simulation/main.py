@@ -51,7 +51,7 @@ def simulate(fuel: float, thrust_duration: int, time_increments: float = 1):
 
         fuel_remaining = fuel - rocket.get_flow_rate() * time_increments
 
-        rocket.set_fuel(fuel_remaining) if fuel_remaining > 0 else rocket.set_fuel(0)
+        rocket.set_fuel(fuel_remaining) if fuel_remaining >= 0 else rocket.set_fuel(0)
 
     post_thrust = {
         "time": time,

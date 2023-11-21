@@ -5,6 +5,9 @@ def optimize(sim_function, max_fuel: float, max_thrust_duration: int, precision:
     
     best = (0, 0) # (height, weight)
     for i in range(iterations):
+        if i % 10 == 0:
+            print(f"Iteration {i} of {iterations}", end="\r")
+
         fuel = random.uniform(0, max_fuel)
         thrust_duration = random.uniform(0, max_thrust_duration)
 
@@ -25,6 +28,6 @@ def optimize(sim_function, max_fuel: float, max_thrust_duration: int, precision:
             max_fuel = fuel
             max_thrust_duration = thrust_duration
 
-            best = (0, 0)
+            best = (best[0] / 2, best[1] / 2)
 
     return best_params
