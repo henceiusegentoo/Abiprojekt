@@ -19,6 +19,13 @@ print(f"Optimizing for {iterations} iterations with a precision of {precision} s
 res = optimize(simulate, fuel, thrust_duration, precision, desired_height, iterations)
 final_res = simulate(res[0], res[1], precision)
 
+plt.plot([i[0] for i in final_res], [i[1] for i in final_res])
+plt.title("Height over time")
+plt.xlabel("Time (s)")
+plt.ylabel("Height (m)")
+plt.savefig("results/height.png")
+plt.clf()
+
 if not os.path.exists("results"):
     os.mkdir("results")
 
