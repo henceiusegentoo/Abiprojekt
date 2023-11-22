@@ -27,9 +27,9 @@ with open("results/data.json", "w") as f:
 
 """
 Output Data format:
-time
-distance
-velocity
-acceleration 
-weight
+time = 0
+distance = 1
+velocity = 2
+acceleration = 3 
+weight = -1
 """
