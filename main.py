@@ -1,4 +1,4 @@
-from simulation.main import simulate
+from simulation import simulate
 from optimization.main import optimize
 import json
 import matplotlib.pyplot as plt
@@ -23,15 +23,13 @@ if not os.path.exists("results"):
     os.mkdir("results")
 
 with open("results/data.json", "w") as f:
-    json.dump(final_res, f, indent=2)
+    json.dump(final_res, f, indent=4)
 
-x = [x[0] for x in final_res["points_in_time"]]
-y = [x[1] for x in final_res["points_in_time"]]
-
-plt.plot(x, y)
-plt.legend(["Distance"])
-plt.xlabel("Time")
-plt.savefig("results/distance.png")
-
-plt.clf()
-print("\nDone!")
+"""
+Output Data format:
+time
+distance
+velocity
+acceleration 
+weight
+"""

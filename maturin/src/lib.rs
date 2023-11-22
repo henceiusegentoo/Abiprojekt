@@ -1,14 +1,13 @@
 mod rocket;
 mod physics;
 
-use std::collections::HashMap;
 use physics::*;
 
 use pyo3::prelude::*;
 
 /// Formats the sum of two numbers as string.
 #[pyfunction]
-fn simulate(fuel: f64, thrust_duration: f64, time_increments: f64) -> HashMap<&'static str, HashMap<&'static str, f64>> {
+fn simulate(fuel: f64, thrust_duration: f64, time_increments: f64) -> Vec<(f64, f64, f64, f64, f64)> {
     let mut rocket = rocket::Rocket::new(
         200_000 as f64,
         (650 * 33) as f64,
@@ -29,13 +28,6 @@ fn simulate(fuel: f64, thrust_duration: f64, time_increments: f64) -> HashMap<&'
     let mut distance = 0 as f64;
     let mut velocity = 0 as f64;
     let mut acceleration = 0 as f64;
-
-    let mut pre_thrust = HashMap::new();
-    pre_thrust.insert("time", time);
-    pre_thrust.insert("distance", distance);
-    pre_thrust.insert("velocity", velocity);
-    pre_thrust.insert("acceleration", acceleration);
-    pre_thrust.insert("weight", rocket.get_total_weight());
 
     let rounding_precision = -(time_increments.log10().round() as i32);
 
@@ -62,7 +54,7 @@ fn simulate(fuel: f64, thrust_duration: f64, time_increments: f64) -> HashMap<&'
         // round time with rounding_precision to avoid floating point errors
         let time_not_rounded = time + time_increments;
         time = round_to_precision(time_not_rounded, rounding_precision);
-        points_in_time.push((time, distance));
+        points_in_time.push((time, distance, velocity, acceleration, rocket.get_total_weight()));
 
         let fuel_remaining = fuel - (rocket.get_flow_rate() * time_increments);
         if fuel_remaining < 0.0 {
@@ -71,13 +63,6 @@ fn simulate(fuel: f64, thrust_duration: f64, time_increments: f64) -> HashMap<&'
             rocket.set_fuel(fuel_remaining);
         }
     }
-
-    let mut post_thrust = HashMap::new();
-    post_thrust.insert("time", time);
-    post_thrust.insert("distance", distance);
-    post_thrust.insert("velocity", velocity);
-    post_thrust.insert("acceleration", acceleration);
-    post_thrust.insert("weight", rocket.get_total_weight());
 
     // Part 2 - Coasting
     while velocity > 0.0 {
@@ -100,22 +85,10 @@ fn simulate(fuel: f64, thrust_duration: f64, time_increments: f64) -> HashMap<&'
         // round time with rounding_precision to avoid floating point errors
         let time_not_rounded = time + time_increments;
         time = round_to_precision(time_not_rounded, rounding_precision);
-        points_in_time.push((time, distance));
+        points_in_time.push((time, distance, velocity, acceleration, rocket.get_total_weight()));
     }
 
-    let mut post_coast = HashMap::new();
-    post_coast.insert("time", time);
-    post_coast.insert("distance", distance);
-    post_coast.insert("velocity", velocity);
-    post_coast.insert("acceleration", acceleration);
-    post_coast.insert("weight", rocket.get_total_weight());
-
-    let mut stages: HashMap<&str, HashMap<&str, f64>> = HashMap::new();
-    stages.insert("pre_thrust", pre_thrust);
-    stages.insert("post_thrust", post_thrust);
-    stages.insert("post_coast", post_coast);
-
-    return stages;
+    return points_in_time;
 }
 
 fn round_to_precision(value: f64, precision: i32) -> f64 {

@@ -11,8 +11,8 @@ def optimize(sim_function, max_fuel: float, max_thrust_duration: int, precision:
         fuel = random.uniform(0, max_fuel)
         thrust_duration = random.uniform(0, max_thrust_duration)
 
-        res = sim_function(fuel, thrust_duration, precision)["post_free_fall"]
-        current = (res["distance"], res["weight"])
+        res = sim_function(fuel, thrust_duration, precision)[-1]
+        current = (res[1], res[-1])
 
         if current[0] > best[0]:
             best = current
