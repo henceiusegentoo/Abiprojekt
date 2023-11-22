@@ -1,0 +1,1 @@
+maturin build --release && pip install --upgrade target/wheels/*.whl --target="../" && rm -r ../*.dist-info
