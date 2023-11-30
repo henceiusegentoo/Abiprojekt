@@ -35,7 +35,7 @@ def main(standalone=False):
             json.dump(final_res, f, indent=4)
 
     else:
-        return final_res[0], final_res[1], final_res[-1]
+        return final_res[-1][0], final_res[-1][1], final_res[-1][-1]
     
 
     """
