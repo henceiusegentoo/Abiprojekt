@@ -165,3 +165,5 @@ results
 
 maturin/target
 maturin/Cargo.lock
+
+mean/
