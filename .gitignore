@@ -166,4 +166,4 @@ results
 maturin/target
 maturin/Cargo.lock
 
-mean/
+calculate_mean.py
