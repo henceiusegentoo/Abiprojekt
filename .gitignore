@@ -167,3 +167,4 @@ maturin/target
 maturin/Cargo.lock
 
 calculate_mean.py
+average.txt
