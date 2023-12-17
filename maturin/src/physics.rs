@@ -39,9 +39,9 @@ fn get_scaled_air_density(distance: f64) -> f64 {
     air_density_at_height.insert(84852, 6.95788e-6);
 
     if distance < -2000.0 {
-        return 1.47808;
+        return air_density_at_height[&-2000];
     } else if distance > 84852.0 {
-        return 6.95788e-6;
+        return air_density_at_height[&84852];
     } else {      
         let closest_key = air_density_at_height.keys().min_by(|a, b| (*a - distance as i64).abs().partial_cmp(&(*b - distance as i64).abs()).unwrap());
 
